@@ -1,0 +1,10 @@
+.navbar-items {
+    width: 100%;
+    display: flex;
+}
+
+.navbar-actions {
+    display: flex;
+    gap: 10px;
+    justify-self: flex-end;
+}

@@ -1,0 +1,29 @@
+#container {
+    color: black;
+}
+
+#profile-circle {
+    color: white;
+    width: 150px;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+    border: solid rgb(122, 20, 20);
+}
+
+#image-circle {
+    color: white;
+    width: 150px;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+    border: solid black;
+}
+
+#username-box {
+    border: solid black;
+}
+
+#title {
+    font-weight: bolder;
+}

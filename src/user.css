@@ -1,0 +1,91 @@
+button {
+    width: auto;
+    /* This will make the button width adjust to its content */
+}
+
+#edit-button {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#poster {
+    width: 50%;
+    height: auto;
+}
+
+
+#accordions {
+    background-color: #ff908b;
+    text-align: center;
+}
+
+.favorite-container {
+
+    background-color: #ff908b;
+
+
+}
+
+#user-box {
+
+    margin: 0 auto;
+    text-align: center;
+
+}
+
+#profile-circle {
+    border-radius: 100px;
+    object-fit: cover;
+    width: 100px;
+    height: 100px;
+    border: solid;
+    background-color: white;
+
+}
+
+
+#user-box-content {
+    border: solid;
+    background-color: #ed1703;
+}
+
+.container {
+    background-color: #5e1914;
+
+
+}
+
+
+
+#logo {
+
+    width: auto;
+    height: 150px;
+
+    display: flex;
+
+    align-items: center;
+
+
+
+
+    /* Add some margin to separate the logo from the profile picture */
+}
+
+#favorite-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Three columns with equal width */
+    grid-gap: 10px;
+    padding: 100;
+
+
+}
+
+h1 {
+    text-align: center;
+}
+
+#profile-picture {
+    text-align: center;
+}

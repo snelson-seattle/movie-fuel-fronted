@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --red: #f10606;
+  --gold: #ffbd59;
+}
+
+body {
+  background-color: black;
+  color: white;
+}
+
+.auth-container {
+  max-width: 500px;
+}
