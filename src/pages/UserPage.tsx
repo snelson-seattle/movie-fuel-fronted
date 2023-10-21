@@ -1,67 +1,49 @@
-import React, { useEffect } from 'react';
+
 import { useSelector, useDispatch } from 'react-redux';
-import getImagesByID from '../utils/movieUtil';
 import { setUser } from '../state/userSlice'; // Import your user slice actions
-import { Card, Button, Image, Accordion, ListGroup } from 'react-bootstrap';
+import { Card, Button, Image, ListGroup } from 'react-bootstrap';
 import { RootState } from '../state/store';
 import './user.css'
+
 function UserPage() {
     const user = useSelector((state: RootState) => state.user);
-
     const dispatch = useDispatch();
 
-    const apiUrl = 'http://localhost:4000/user/profile';
 
-    const loadFavoriteItems = async (favs: string[]) => {
 
-        const imageUrls = await Promise.all(favs.map(async (item: string) => getImagesByID(item)));
-        console.log(imageUrls);
-        dispatch(setUser({ favoriteItems: imageUrls }));
-    };
 
-    useEffect(() => {
-        const usernameToRetrieve = 'danny007';
 
-        fetch(`${apiUrl}/${usernameToRetrieve}`)
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then((data) => {
-                dispatch(setUser(data));
-
-                loadFavoriteItems(data.Favorites);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-    }, [dispatch]);
     function handleAboutMeChange(event: any) {
         dispatch(setUser({ ...user, editedText: event.target.textContent }));
     }
 
     function handleEditClick() {
-        dispatch(setUser({ ...user, isEditing: true, editedText: user.AboutMe }));
+        dispatch(setUser({ ...user, isEditing: true, editedText: user.aboutme }));
     }
 
     function handleCancelClick() {
-        dispatch(setUser({ ...user, isEditing: false, editedText: user.AboutMe }));
+        dispatch(setUser({ ...user, isEditing: false, editedText: user.aboutme }));
     }
 
     function handleSaveClick() {
-        dispatch(setUser({ ...user, isEditing: false, AboutMe: user.editedText }));
-    }
+        dispatch(setUser({ ...user, isEditing: false, aboutme: user.editedText }));
 
+    }
+    function handleDelete(id: number) {
+
+        dispatch({
+            type: 'user/removeFromFavorites',
+            payload: {
+                id: (id.toString())
+            },
+        })
+    }
     return (
         <>
             <div className="d-flex flex-column justify-content-center align-items-center">
                 <p id='title'>Your Profile Page</p>
-                <div id="profile-picture">
-                    <Image id="profile-circle" src={user.ProfilePicture} alt="profile for user" roundedCircle />
-                </div>
-                <span id="username-box"></span>
+
+                <span id="username-box">{user.username}</span>
             </div>
 
             <div id="container">
@@ -85,7 +67,7 @@ function UserPage() {
                                 contentEditable={user.isEditing}
                                 onBlur={handleAboutMeChange}
                             >
-                                {user.isEditing ? user.editedText : user.AboutMe}
+                                {user.isEditing ? user.editedText : user.aboutme}
                             </p>
                         </Card.Body>
                     </Card>
@@ -93,7 +75,7 @@ function UserPage() {
                     {/* Email Section */}
                     <Card>
                         <Card.Header>Email</Card.Header>
-                        <Card.Body>{user.Email}</Card.Body>
+                        <Card.Body>{user.email}</Card.Body>
                     </Card>
 
                     {/* Favorites Section */}
@@ -109,6 +91,7 @@ function UserPage() {
                                         <p>{item.title}</p>
                                         <img id="profile-circle" src={`https://image.tmdb.org/t/p/original${item.poster_path}`} alt="Favorite" />
                                         <p>{item.overview}</p>
+                                        <Button onClick={() => handleDelete(item.id)} >delete</Button>
                                     </ListGroup.Item>
                                 ))
                             ) : (

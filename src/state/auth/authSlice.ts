@@ -4,7 +4,7 @@ import { RootState } from "../store";
 
 const authSlice = createSlice({
   name: "auth",
-  initialState: { token: null} as AuthState,
+  initialState: { token: null } as AuthState,
   reducers: {
     setCredentials: (state, action: PayloadAction<AuthResponse>) => {
       const { accessToken } = action.payload;
@@ -16,7 +16,7 @@ const authSlice = createSlice({
   },
 });
 
-export const {setCredentials, logOut} = authSlice.actions;
+export const { setCredentials, logOut } = authSlice.actions;
 
 export default authSlice.reducer;
 

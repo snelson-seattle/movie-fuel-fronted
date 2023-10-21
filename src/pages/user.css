@@ -12,7 +12,8 @@
 }
 
 #username-box {
-    border: solid black
+
+    font-weight: bolder;
 }
 
 #title {

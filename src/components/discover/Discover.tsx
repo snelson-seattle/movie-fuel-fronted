@@ -1,12 +1,13 @@
 import Scroll from "./Scroll";
-import SearchList from "./SearchList";
-import FetchResults from "./FetchResults";
+import SearchList from "./DiscoverList";
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'; 
 interface query{
-    text:string | undefined,
+    text:string  | undefined,
     language:string | null,
-    page:number | null
+    page:number | null,
+    sortby:string | undefined,
+    sortdir:string | undefined
 }
 interface resultItem {
     adult: boolean,
@@ -24,7 +25,7 @@ interface resultItem {
     vote_average: number,
     vote_count: number
 }
-function SearchPage(props:query){
+function DiscoverScroll(props:query){
   const [loading, setLoading] = useState(false); 
   const [movies, setMovies] = useState([]);
   
@@ -34,8 +35,9 @@ function SearchPage(props:query){
         // Till the data is fetch using API  
         // the Loading page will show. 
         setLoading(true);
-        if(props.text && props.language && props.page){
-           var urltext = `http://127.0.0.1:4000/MovieFuel/search?search=${props.text}&page=${props.page}`;
+        if(props.text && props.page){
+           var urltext = `http://127.0.0.1:4000/MovieFuel/discover?include=${props.text}&page=${props.page}&sortBy=${props.sortby}&sortDir=${props.sortdir}&exclude=""`;
+           console.log(urltext)
          }
          else{
           var urltext = `http://127.0.0.1:4000/MovieFuel/search?search=barbie&page=1`;
@@ -60,7 +62,7 @@ function SearchPage(props:query){
 
     // Call the function 
     loadMovies(); 
-}, [props.text,props.page]); 
+}, [props.text,props.page,props.sortby,props.sortdir]); 
       return(
       <> 
         <div className="App"> 
@@ -76,4 +78,4 @@ function SearchPage(props:query){
     
 }
 
-export default SearchPage
+export default DiscoverScroll
