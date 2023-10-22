@@ -16,13 +16,13 @@ function GuestProfileView() {
     const dispatch = useDispatch();
 
     const { Otherusername } = useParams();
-    console.log(Otherusername);
-    const apiUrl = 'http://localhost:4000/user/profile';
+
+    const apiUrl = 'http://35.91.76.180/user/profile';
     const loadFavoriteItems = async (favs: string[]) => {
         const imageUrls = await Promise.all(
             favs.map(async (item) => {
                 // Use axios.get to perform the GET request
-                const response = await axios.get(`http://127.0.0.1:4000/MovieFuel/search/byID?idnumber=${item}`, {
+                const response = await axios.get(`http://35.91.76.180/MovieFuel/search/byID?idnumber=${item}`, {
                     withCredentials: false,
                 });
                 return response.data; // Extract data from the Axios response
@@ -46,7 +46,7 @@ function GuestProfileView() {
             .then(data => {
                 console.log(data);
                 dispatch(setOtherUser(data)); // Update the state with the fetched user data
-                loadFavoriteItems(data.Favorites);
+                loadFavoriteItems(data.favorites);
             })
             .catch(error => {
                 console.error('Error:', error); // Handle and display the error to the user
@@ -57,12 +57,12 @@ function GuestProfileView() {
         <>
 
             <div className="d-flex flex-column justify-content-center align-items-center">
-                <p id='title'>{guest.UserName}'s Profile Page</p>
+                <p id='title'>{guest.username}'s Profile Page</p>
                 <div id="profile-picture">
 
                     <Image
                         id="profile-circle"
-                        src={guest.ProfilePicture}
+                        src={guest.profilepicture}
                         alt="profile for user"
                         roundedCircle
                     />
@@ -75,11 +75,11 @@ function GuestProfileView() {
                     {/* About Me Section */}
                     <Card>
 
-                        <Card.Header>{guest.UserName}'s About Me </Card.Header>
+                        <Card.Header>{guest.username}'s About Me </Card.Header>
                         <Card.Body>
                             {/* About Me content */}
                             <p>
-                                {guest.AboutMe}
+                                {guest.aboutme}
                             </p>
 
                         </Card.Body>
@@ -92,7 +92,7 @@ function GuestProfileView() {
                     <Card>
 
                         <Card.Header >
-                            {guest.UserName}'s Favorites
+                            {guest.username}'s Favorites
                         </Card.Header>
 
                         {/* List of favorites */}

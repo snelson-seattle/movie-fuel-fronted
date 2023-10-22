@@ -12,7 +12,7 @@ export default function MovieCarousel({ movies }: Props) {
       {movies.map((movie) => {
         return (
           <Carousel.Item key={movie.id} className="border border-warning rounded overflow-hidden">
-            <Link to={`/movies/${movie.id}`}>
+            <Link to={`/Movies/${movie.id}`}>
             <img
               height={500}
               className="d-block w-100"

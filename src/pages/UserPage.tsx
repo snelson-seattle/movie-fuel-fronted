@@ -42,6 +42,9 @@ function UserPage() {
         <>
             <div className="d-flex flex-column justify-content-center align-items-center">
                 <p id='title'>Your Profile Page</p>
+                {user.profilepicture ?
+                    <Image id="profile-circle" src={user.profilepicture} alt="profile for user" roundedCircle />
+                    : <Image id="default-profile-circle" src={user.profilepicture} alt="" roundedCircle />}
 
                 <span id="username-box">{user.username}</span>
             </div>
@@ -64,7 +67,7 @@ function UserPage() {
                         <Card.Body>
                             <p
                                 id="editableText"
-                                contentEditable={user.isEditing}
+                                contentEditable={true}
                                 onBlur={handleAboutMeChange}
                             >
                                 {user.isEditing ? user.editedText : user.aboutme}

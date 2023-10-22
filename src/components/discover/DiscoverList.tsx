@@ -18,7 +18,7 @@ interface resultItem {
 }
 
 function DiscoverList(resultlist: any) {
-    console.log(resultlist.resultlist)
+    console.log("This is the result list", resultlist.resultlist)
   const filtered = resultlist.resultlist.map((result:any) => DiscoverResult({...result})); 
   return (
     <div>

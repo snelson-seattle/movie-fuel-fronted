@@ -1,12 +1,8 @@
-// import Dropdown from 'react-bootstrap/Dropdown';
-// import DropdownButton from 'react-bootstrap/DropdownButton';
-// import Form from 'react-bootstrap/Form';
-// import InputGroup from 'react-bootstrap/InputGroup';
 import SearchPage from './searchresults/Search';
-import React, { useState } from 'react'
-import{ Dropdown, DropdownButton, Form, InputGroup } from 'react-bootstrap'
+import React, { FormEvent, useState } from 'react'
+import{ Button, InputGroup } from 'react-bootstrap'
 import { useParams } from 'react-router-dom';
-function ButtonDropdownsExample() {
+function Searchbar() {
   const initialSearch = useParams();
   console.log(initialSearch);
   const [query, setQuery] = React.useState(initialSearch.searchtext);
@@ -20,35 +16,30 @@ function ButtonDropdownsExample() {
     }
   }
     let value = '';
-    let sort = 'popularity.desc';
-    function onSubmit(){
+    function onSubmit(e: FormEvent<HTMLFormElement>){
+        e.preventDefault();
         setQuery(value);
         console.log(value)
     }
     function onChange(event:any){
-        console.log("change detected")
         value = event?.target.value;
-    }
-    function dropDownClick(event:any){
-        console.log('something happened!')
-        console.log(event.target.id)
     }
   return (
     <>
       <InputGroup className="w-50 p-3">
       <form className="d-flex" onSubmit={onSubmit}>
-            <input type='text' className='form-control' placeholder="Search movies" onChange={onChange}></input>
-            <input type="btn" id='submitfire' className='btn btn-danger' value='Go' onClick={onSubmit}></input>
+            <input type='text' data-testid="searchbar" className='form-control me-3' placeholder="Search movies" onChange={onChange}></input>
+            <Button id='submitfire' data-testid="go" className='btn btn-danger' type="submit">Go</Button>
         </form>
       </InputGroup>
       <SearchPage text={query} language="en-US" page={currentPage}></SearchPage>
       
-      <input type="btn" className='btn btn-danger' id="prevPageButton" value="Previous Page" onClick={prevpage}></input>
+      <Button className='btn btn-danger' data-testid="prevPageButton" id="prevPageButton"  onClick={prevpage}>Previous Page</Button>
       <span>Page:{currentPage}</span>
-      <input type="btn" className='btn btn-danger' id="nextPageButton" value="Next Page" onClick={nextpage}></input>
+      <Button className='btn btn-danger' data-testid="nextPageButton" id="nextPageButton" onClick={nextpage}>Next Page</Button>
     </>
   );
 }
 
 
-export default ButtonDropdownsExample;
+export default Searchbar;

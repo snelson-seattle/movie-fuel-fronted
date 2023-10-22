@@ -26,7 +26,7 @@ const LoginPage = () => {
       setUsername("");
       setPassword("");
 
-      navigate("/");
+      navigate(-1);
     } catch (error: any) {
       if (!error.status) {
         setErrMsg("No Response From Server");

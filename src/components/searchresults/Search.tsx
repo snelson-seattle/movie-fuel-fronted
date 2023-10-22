@@ -45,17 +45,23 @@ function SearchPage(props:query){
         // promise settles and return its result
         //axios.defaults.headers.get['Content-Type'] ='application/json;charset=utf-8'
         //axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
-        const response = await axios({
-          method: 'get',
-          url: urltext,
-          withCredentials: false
-        })
-
-        // After fetching data stored it in posts state. 
-        setMovies(response.data.results); 
-
-        // Closed the loading page 
-        setLoading(false); 
+        console.log(urltext);
+        try{
+          const response = await axios({
+            method: 'get',
+            url: urltext,
+            withCredentials: false
+          })
+  
+          // After fetching data stored it in posts state. 
+          setMovies(response.data.results); 
+  
+          // Closed the loading page 
+          setLoading(false); 
+        } catch (error) {
+          console.log(error);
+        }
+       
     } 
 
     // Call the function 

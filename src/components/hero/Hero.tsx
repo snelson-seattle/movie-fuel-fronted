@@ -1,4 +1,5 @@
-import {useState, useEffect} from "react";
+import { useEffect, useState } from "react";
+import { LinkContainer } from "react-router-bootstrap";
 import axios from "axios";
 import { Button } from "react-bootstrap";
 import MovieCarousel from "../movie-carousel/MovieCarousel";
@@ -9,15 +10,16 @@ import "./hero.css";
 const Hero = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
 
-  const getMovieData = async () => {
-    const response = await axios.get("http://localhost:4000/MovieFuel/nowPlaying");
+  const getNowPlayingMovies = async () => {
+    const response = await axios.get(
+      "http://35.91.76.180/MovieFuel/nowPlaying"
+    );
     setMovies(response.data);
-  }
+  };
 
   useEffect(() => {
-    getMovieData();
-  }, [])
-
+    getNowPlayingMovies();
+  }, []);
 
   return (
     <section className="hero">
@@ -28,13 +30,20 @@ const Hero = () => {
           </h1>
           <p className="text-warning">Seen any movies lately?</p>
           <div className="actions">
-            <Button
-              variant="danger"
-              style={{ fontFamily: "Poppins, sans-serif" }}
-            >
-              WRITE A REVIEW
-            </Button>
-            <Button variant="outline-warning">READ REVIEWS</Button>
+            <LinkContainer to="/Search/Barbie">
+              <Button
+                variant="danger"
+                style={{ fontFamily: "Poppins, sans-serif" }}
+                as="a"
+              >
+                WRITE A REVIEW
+              </Button>
+            </LinkContainer>
+            <LinkContainer to="/reviews">
+              <Button variant="outline-warning" as="a">
+                READ REVIEWS
+              </Button>
+            </LinkContainer>
           </div>
         </div>
         <div className="hero-content_right">

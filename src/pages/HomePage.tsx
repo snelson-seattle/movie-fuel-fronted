@@ -67,7 +67,20 @@ const HomePage = () => {
     if (!auth.token && user.isLoaded && user.favorites) {
       axios.put(`http://localhost:4000/user/profile/About/${user.username}`, { about: user.aboutme })
       axios.patch(`http://localhost:4000/user/profile/Favorites/${user.username}`, { favorites: user.favorites })
-      dispatch(setUser({ isLoaded: false }));
+      dispatch(
+        setUser({
+          aboutme: '',
+          editedText: '',
+          isEditing: false,
+          isFavoritesOpen: false,
+          username: '',
+          email: '',
+          favoriteItems: [],
+          favorites: [],
+          profilepicture: '',
+          isLoaded: false, // Reset the isLoaded state to false
+        })
+      );
 
 
     }

@@ -4,12 +4,12 @@ import { createSlice } from '@reduxjs/toolkit';
 const guestSlice = createSlice({
     name: 'guest',
     initialState: {
-        AboutMe: '',
-        UserName: '',
-        Email: '',
+        aboutme: '',
+        username: '',
+        email: '',
         favoriteItems: [],
-        Favorites: [],
-        ProfilePicture: '',
+        favorites: [],
+        profilepicture: '',
     },
     reducers: {
         setOtherUser: (state, action) => {

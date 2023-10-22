@@ -7,7 +7,6 @@ import { RootState } from "../../state/store";
 import { useSendLogoutMutation } from "../../state/auth/authApiSlice";
 import "./navbar.css";
 
-
 function Navigation() {
   const navigate = useNavigate();
   const [sendLogout, { isLoading, isSuccess, isError, error }] =
@@ -28,11 +27,8 @@ function Navigation() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Movies</Nav.Link>
-
-            <Nav.Link href="#link">Reviews</Nav.Link>
+            <Nav.Link as={Link} to={"/Reviews"}>Reviews</Nav.Link>
             <Nav.Link as={Link} to="/Search/Barbie">Search</Nav.Link>
-
           </Nav>
         </Navbar.Collapse>
         <div className="navbar-actions">

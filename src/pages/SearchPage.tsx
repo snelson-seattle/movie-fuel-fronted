@@ -1,8 +1,8 @@
 
-import ButtonDropdownsExample from "../components/Searchbar";
+import Searchbar from "../components/Searchbar";
 const SearchPagePage = () => {
     return <section>
-        <ButtonDropdownsExample/>
+        <Searchbar/>
     </section>;
   };
 export default SearchPagePage

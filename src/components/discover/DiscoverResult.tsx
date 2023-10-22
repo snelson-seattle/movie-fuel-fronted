@@ -54,6 +54,9 @@ function DiscoverResult(movie: resultItem) {
             <Link to={`/discover/${movie.genre_ids}`}>
                 <Button variant='secondary'>Find similar movies</Button>
             </Link>
+            <Link to={`/Reviews`}>
+                <Button variant='secondary'>Review This Movie</Button>
+            </Link>
         </Card.Footer>
     </Card>
   )

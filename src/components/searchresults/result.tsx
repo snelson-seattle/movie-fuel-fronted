@@ -1,8 +1,8 @@
 
 import { Card, Button, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../state/store';
 import axios from 'axios';
 interface resultItem {
     adult: boolean,
@@ -24,8 +24,9 @@ interface resultItem {
 
 function SearchResult(movie: resultItem) {
     const dispatch = useDispatch();
-
+    const auth = useSelector((state: RootState) => state.auth);
     async function addToFavs(id: number) {
+
         const response = await axios.get(`http://127.0.0.1:4000/MovieFuel/search/byID?idnumber=${id}`, {
             withCredentials: false,
         });
@@ -73,7 +74,12 @@ function SearchResult(movie: resultItem) {
                 <Link to={`/discover/${movie.genre_ids}`}>
                     <Button variant='secondary'>Find similar movies</Button>
                 </Link>
-                <Button variant='secondary' onClick={() => addToFavs(movie.id)}>Add to Favorites</Button>
+                <Link to={`/Reviews`}>
+                    <Button variant='secondary'>Review This Movie</Button>
+                </Link>
+                
+                {auth.token ? <Button variant='secondary' onClick={() => addToFavs(movie.id)}>Add to Favorites</Button> : ''}
+
 
             </Card.Footer>
         </Card>
