@@ -22,7 +22,7 @@ const HomePage = () => {
     const imageUrls = await Promise.all(
       favs.map(async (item) => {
         // Use axios.get to perform the GET request
-        const response = await axios.get(`http://127.0.0.1:4000/MovieFuel/search/byID?idnumber=${item}`, {
+        const response = await axios.get(`http://35.91.76.180/MovieFuel/search/byID?idnumber=${item}`, {
           withCredentials: false,
         });
         return response.data; // Extract data from the Axios response
@@ -32,7 +32,7 @@ const HomePage = () => {
     dispatch(setUser({ favoriteItems: imageUrls }));
   };
 
-  const apiUrl = 'http://localhost:4000/user/profile';
+  const apiUrl = 'http://35.91.76.180/user/profile';
   // Add isLoaded state
   //todo add isloaded to store
   useEffect(() => {
@@ -65,8 +65,8 @@ const HomePage = () => {
       }
     }
     if (!auth.token && user.isLoaded && user.favorites) {
-      axios.put(`http://localhost:4000/user/profile/About/${user.username}`, { about: user.aboutme })
-      axios.patch(`http://localhost:4000/user/profile/Favorites/${user.username}`, { favorites: user.favorites })
+      axios.put(`http://35.91.76.180/user/profile/About/${user.username}`, { about: user.aboutme })
+      axios.patch(`http://35.91.76.180/user/profile/Favorites/${user.username}`, { favorites: user.favorites })
       dispatch(
         setUser({
           aboutme: '',
