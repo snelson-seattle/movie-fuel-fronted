@@ -27,7 +27,7 @@ function SearchResult(movie: resultItem) {
     const auth = useSelector((state: RootState) => state.auth);
     async function addToFavs(id: number) {
 
-        const response = await axios.get(`http://127.0.0.1:4000/MovieFuel/search/byID?idnumber=${id}`, {
+        const response = await axios.get(`http://35.91.76.180/MovieFuel/search/byID?idnumber=${id}`, {
             withCredentials: false,
         });
 

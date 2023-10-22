@@ -35,10 +35,10 @@ function SearchPage(props:query){
         // the Loading page will show. 
         setLoading(true);
         if(props.text && props.language && props.page){
-           var urltext = `http://127.0.0.1:4000/MovieFuel/search?search=${props.text}&page=${props.page}`;
+           var urltext = `http://35.91.76.180/MovieFuel/search?search=${props.text}&page=${props.page}`;
          }
          else{
-          var urltext = `http://127.0.0.1:4000/MovieFuel/search?search=barbie&page=1`;
+          var urltext = `http://35.91.76.180/MovieFuel/search?search=barbie&page=1`;
          }
         
         // Await make wait until that  
