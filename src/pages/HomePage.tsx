@@ -85,6 +85,7 @@ const HomePage = () => {
 
     }
   }, [dispatch]); // Add isLoaded as a dependency
+  
   return <section>
     <Hero />
   </section>;
