@@ -34,11 +34,12 @@ function SearchPage(props:query){
         // Till the data is fetch using API  
         // the Loading page will show. 
         setLoading(true);
+        let urltext;
         if(props.text && props.language && props.page){
-           var urltext = `http://35.91.76.180/MovieFuel/search?search=${props.text}&page=${props.page}`;
+           urltext = `https://7dezero58a.execute-api.us-west-2.amazonaws.com/DEV/MovieFuel/search?search=${props.text}&page=${props.page}`;
          }
          else{
-          var urltext = `http://35.91.76.180/MovieFuel/search?search=barbie&page=1`;
+          urltext = `https://7dezero58a.execute-api.us-west-2.amazonaws.com/DEV/MovieFuel/search?search=barbie&page=1`;
          }
         
         // Await make wait until that  

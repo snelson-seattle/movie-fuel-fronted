@@ -12,7 +12,7 @@ const Hero = () => {
 
   const getNowPlayingMovies = async () => {
     const response = await axios.get(
-      "http://35.91.76.180/MovieFuel/nowPlaying"
+      "https://7dezero58a.execute-api.us-west-2.amazonaws.com/DEV/MovieFuel/nowPlaying"
     );
     setMovies(response.data);
   };

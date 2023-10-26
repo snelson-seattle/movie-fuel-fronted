@@ -17,12 +17,12 @@ function GuestProfileView() {
 
     const { Otherusername } = useParams();
 
-    const apiUrl = 'http://35.91.76.180/user/profile';
+    const apiUrl = 'https://7dezero58a.execute-api.us-west-2.amazonaws.com/DEV/user/profile';
     const loadFavoriteItems = async (favs: string[]) => {
         const imageUrls = await Promise.all(
             favs.map(async (item) => {
                 // Use axios.get to perform the GET request
-                const response = await axios.get(`http://35.91.76.180/MovieFuel/search/byID?idnumber=${item}`, {
+                const response = await axios.get(`https://7dezero58a.execute-api.us-west-2.amazonaws.com/DEV/MovieFuel/search/byID?idnumber=${item}`, {
                     withCredentials: false,
                 });
                 return response.data; // Extract data from the Axios response

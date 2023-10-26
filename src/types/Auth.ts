@@ -1,4 +1,5 @@
 export type AuthResponse = {
+  statusCode?: number;
   message?: string;
   accessToken?: string;
 };

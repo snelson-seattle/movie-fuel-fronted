@@ -11,7 +11,7 @@ function MoviePage(){
     useEffect(() => { 
         const loadMovies = async () => { 
             setLoading(true);
-            var urltext = `http://35.91.76.180/MovieFuel/search/byID?idnumber=${movieID.tmdb_id}`;
+            var urltext = `https://7dezero58a.execute-api.us-west-2.amazonaws.com/DEV/MovieFuel/search/byID?idnumber=${movieID.tmdb_id}`;
             const response = await axios({
               method: 'get',
               url: urltext,
